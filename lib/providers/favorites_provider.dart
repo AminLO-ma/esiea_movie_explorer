@@ -6,7 +6,7 @@ class FavoritesProvider {
   // n'importe quel widget peut écouter cette liste
   final ValueNotifier<List<Movie>> favorites = ValueNotifier([]);
 
-  void toogleFavorite(Movie movie) {
+  void toggleFavorite(Movie movie) {
     final current = List<Movie>.from(favorites.value);
 
     //si est déjà en favori on le retire, sinon on l'ajoute
