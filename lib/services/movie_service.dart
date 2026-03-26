@@ -2,17 +2,24 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../models/movie.dart';
 
-const String _apiKey = String.fromEnvironment('TMDB_API_KEY');
+const String _apiKey = String.fromEnvironment(
+  'TMDB_API_KEY',
+); //flutter run --dart-define=TMDB_API_KEY=api Key
 
 const String _baseUrl = "https://api.themoviedb.org/3";
 
 class MovieService {
   // pour récupèrer les films populaires du moment
   Future<List<Movie>> fetchPopularMovies() async {
-    final url = Uri.parse('$_baseUrl/movie/popular?apiKey&language=fr-FR');
+    final url = Uri.parse(
+      '$_baseUrl/movie/popular?api_key=$_apiKey&language=fr-FR',
+    );
 
     try {
-      final response = await http.get(url);
+      final response = await http.get(
+        url,
+        headers: {'User-Agent': 'Mozilla/5.0 ', 'Accept': 'application/json'},
+      );
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
@@ -34,7 +41,10 @@ class MovieService {
     );
 
     try {
-      final response = await http.get(url);
+      final response = await http.get(
+        url,
+        headers: {'User-Agent': 'Mozilla/5.0 ', 'Accept': 'application/json'},
+      );
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);

@@ -15,6 +15,7 @@ class FavoritesProvider {
     } else {
       current.add(movie);
     }
+    favorites.value = current;
   }
 
   bool isFavorite(Movie movie) {
