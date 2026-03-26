@@ -32,7 +32,7 @@ class Movie {
   Map<String, dynamic> toJson() => _$MovieToJson(this);
 
   // l'API donne juste le chemin, je reconstruit l'URL complète ici
-  String get fullPosteURL {
+  String get fullPosterUrl {
     if (posterPath.isEmpty) return '';
     return 'https://image.tmdb.org/t/p/w500$posterPath';
   }
